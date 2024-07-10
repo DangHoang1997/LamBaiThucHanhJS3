@@ -108,7 +108,7 @@ document.getElementById("findLastEven").onclick = function () {
   // process xử lý để các phần tử trong mảng được đếm
   var findLastEven = -1;
   for (var i = arrNumber.length - 1; i >= 0; i--) {
-    if (arrNumber[i] % 2 === 0) {
+    if (arrNumber[i] % 2 === 0 && arrNumber[i] >0  ) {
       findLastEven = arrNumber[i];
       break;
     }
@@ -156,7 +156,7 @@ document.getElementById('fromMinToMax').onclick = function(){
 // bài 8 :tìm số nguyên tố đầu tiên
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-document.getElementById('findPrimeNumber').onclick = function(){
+
   // for(var index = 0; index < arrNumber.length ; index ++){
 
   //   if(isNaN(arrNumber[index])||arrNumber[index]<2 || arrNumber[index]% Math.sqrt(arrNumber[index]===0)){
@@ -177,33 +177,104 @@ document.getElementById('findPrimeNumber').onclick = function(){
 
 
   //................................................................//
-  
-  var firstPrime = null; // Biến lưu số nguyên tố đầu tiên, ban đầu là null
+  document.getElementById('findPrimeNumber').onclick = function () {
+    var firstPrime = null; // Biến lưu số nguyên tố đầu tiên, ban đầu là null
+   
 
-  // Duyệt qua từng phần tử trong mảng arrNumber
-  for (var index = 1; index < arrNumber.length; index++) {
-    var number = arrNumber[index];
+    // Duyệt qua từng phần tử trong mảng arrNumber
+    for (var index = 0; index < arrNumber.length; index++) {
+        var number = arrNumber[index];
 
-    // Kiểm tra số nguyên tố
-    if (isNaN(number) || number < 2 || isDivisibleBySqrt(number)) {
-      // Nếu không phải số, nhỏ hơn 2, hoặc không phải số nguyên tố
-      console.log(`Phần tử tại vị trí ${index} không phải là số nguyên tố.`);
-    } else {
-      // Nếu là số nguyên tố
-      firstPrime = number;
-      console.log(`Số nguyên tố đầu tiên trong mảng là: ${firstPrime}`);
-      break; // Dừng vòng lặp sau khi tìm thấy số nguyên tố đầu tiên
+        // Kiểm tra số nguyên tố
+        if (isPrime(number)) {
+            // Nếu là số nguyên tố
+            firstPrime = number;
+            console.log(`Số nguyên tố đầu tiên trong mảng là: ${firstPrime}`);
+            break; // Dừng vòng lặp sau khi tìm thấy số nguyên tố đầu tiên
+        } else {
+            console.log(`Phần tử tại vị trí ${index} không phải là số nguyên tố.`);
+        }
     }
+
+    document.getElementById("result8").innerHTML = `Số nguyên tố đầu tiên trong mảng là: ${firstPrime}`;
+}
+
+// Hàm kiểm tra số nguyên tố
+function isPrime(num) {
+    if (num <= 1) return false;
+    for (var i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+    }
+    return true;
+}
+
+
+
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
+// bài 9 :đếm số nguyên tố 
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+document.getElementById('countPrime').onclick = function(){
+  var count =0; 
+  var index = 0; 
+  var arr = arrNumber;
+  
+  while(index < arr.length){
+    if(isNaN(arr[index]) ||arr[index] < 2 ||!isPrime(arr[index]) ){
+      console.log(`${arr[index]} , không phải là số nguyên tố `);
+
+    }else {
+      console.log(`${arr[index]} là số nguyên tố.`);
+      count ++;
+    }
+    index ++;
   }
-
-  // Cập nhật kết quả lên HTML
-  document.getElementById("result8").innerHTML = `Số nguyên tố đầu tiên trong mảng là: ${firstPrime}`;
+  document.getElementById("result9").innerHTML = `đếm các số nguyên tố là: ${count}`;
 }
 
-// Hàm kiểm tra tính chia hết cho căn bậc hai
-function isDivisibleBySqrt(number) {
-  var sqrtNumber = Math.sqrt(number);
-  return number % sqrtNumber === 0;
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
+// bài 10 :so sánh số lượng số âm số dương
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// các bước làm bài 
+/*
+b1 : truyền mảng vào từng check posi, negati
+b2 : lấy số return từ posi, negati
+b3 : so sánh  
+*/
+function checkPositiveNumber(arrNumber) {
+  var count = 0;
+  for (var index = 0; index < arrNumber.length; index++) {
+      if (arrNumber[index] > 0) {
+          count++;
+      }
+  }
+  return count;
 }
 
+function checkNegativeNumber(arrNumber) {
+  var count = 0;
+  for (var index = 0; index < arrNumber.length; index++) {
+      if (arrNumber[index] < 0) {
+          count++;
+      }
+  }
+  return count;
+}
+
+document.getElementById('checkNumber1').onclick = function () {
+  
+  var positiveCount = checkPositiveNumber(arrNumber);
+  var negativeCount = checkNegativeNumber(arrNumber);
+
+  if (positiveCount > negativeCount) {
+      document.getElementById("result10").innerHTML = `Số dương là: ${positiveCount}, > số âm là: ${negativeCount}`;
+  } else if (positiveCount < negativeCount) {
+      document.getElementById("result10").innerHTML = `Số dương là: ${positiveCount}, < số âm là: ${negativeCount}`;
+  } else if (positiveCount === negativeCount) {
+      document.getElementById("result10").innerHTML = `Số dương là: ${positiveCount}, = số âm là: ${negativeCount}`;
+  } else {
+      document.getElementById("result10").innerHTML = `Số không hợp lệ`;
+  }
+}
 
