@@ -16,17 +16,99 @@
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"
         />
+        <style>
+            .content {
+                display: none;
+                margin: 10px 0;
+                padding: 10px;
+                border: 1px solid #ddd;
+            }
+            .button {
+                cursor: pointer;
+                background-color: #f1f1f1;
+                padding: 10px;
+                border: 1px solid #ddd;
+            }
+        </style>
     </head>
 
     <body>
-        <header>
-            <!-- place navbar here -->
-        </header>
-        <main></main>
-        <footer>
-            <!-- place footer here -->
-        </footer>
-        <!-- Bootstrap JavaScript Libraries -->
+        <br>
+        <br>
+        <br>
+        
+
+        <input id="addInput" type="number" placeholder="nhập số nguyên">
+        <button id="addNumber">Add number</button>
+        <span id="result">result</span>
+        <br>
+        <br>
+        <br>
+
+        
+
+
+
+
+        
+        <div class="button" onclick="toggleContent('content1')">1 Tổng số dương</div>
+        <div id="content1" class="content">
+            <button id="sumPositiveNumber">sumPositiveNumber</button>
+            <span id="result1">Tổng các số dương là </span>
+           
+           
+        </div>
+        
+        <div class="button" onclick="toggleContent('content2')">2 Đếm số dương</div>
+        <div id="content2" class="content">
+            <button id="coutPositiveNumber">Count</button>
+            <span id="result2">các số dương là </span>
+        </div>
+        
+        <div class="button" onclick="toggleContent('content3')">3 Tìm số nhỏ nhất</div>
+        <div id="content3" class="content">
+            <button id="minNumberrrrrrr">Count</button>
+            <span id="result3">số nhỏ nhất  </span>
+        </div>
+        
+        <div class="button" onclick="toggleContent('content4')">4 Tìm số dương nhỏ nhất</div>
+        <div id="content4" class="content">
+            <button id="minPositiveNumber">Count</button>
+            <span id="result4"> Số là </span>
+        </div>
+        <div class="button" onclick="toggleContent('content5')">5 tìm số chẵn cuối cùng</div>
+        <div id="content5" class="content">
+            <button id="findLastEven">Find</button>
+            <span id="result5"> </span>
+        </div>
+        <div class="button" onclick="toggleContent('content6')">6 đổi chỗ </div>
+        <div id="content6" class="content">
+            <input id="location1" type="number" placeholder="nhập số ">
+            <input id="location2" type="number" placeholder="nhập số ">
+
+            <button id="changeLocation">Find</button>
+            <span id="result6"> </span>
+        </div>
+        <div class="button" onclick="toggleContent('content7')">7 sắp xếp tăng dần </div>
+        <div id="content7" class="content">
+            <button id="fromMinToMax">Find</button>
+            <span id="result7"> </span>
+        </div>
+        <div class="button" onclick="toggleContent('content8')">8 tìm số nguyên tố đầu tiên </div>
+        <div id="content8" class="content">
+            <button id="findPrimeNumber">Find</button>
+            <span id="result8"> </span>
+        </div>
+        <div class="button" onclick="toggleContent('content9')">9 đếm số nguyên </div>
+        <div id="content9" class="content">
+            Nội dung cho tìm số dương nhỏ nhất
+        </div>
+        <div class="button" onclick="toggleContent('content10')">10 so sánh số lượng số âm và số dương </div>
+        <div id="content10" class="content">
+            Nội dung cho tìm số dương nhỏ nhất
+        </div>
+        
+
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -38,5 +120,6 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
+        <script src="../index.jS"></script>
     </body>
 </html>
